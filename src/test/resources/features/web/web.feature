@@ -167,11 +167,6 @@ Feature: CTI Spok Manager Service
     When send cti config
     Then validate LMC registry address and port
 
-  Scenario: Answer call and hangup
-  Given somehting
-  When make call to "34333"
-  Then cti service answer
-
 #  Scenario: Validate Consul is running
 #    Then validate "Consul" is "Running"
 #
