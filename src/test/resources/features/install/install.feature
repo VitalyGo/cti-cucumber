@@ -1,9 +1,8 @@
-@Installer
 Feature: Validate Spok CTI Service - Spok CTI Client install
 
   Scenario: Validate Spok CTI Client files
     Given install directory "C:\\Program Files (x86)\\Amcom"
-    Given install files
+    Given install items
     """
     [
       { "Type":"File","Location":"bin\\amcom_util.dll" },
@@ -15,7 +14,7 @@ Feature: Validate Spok CTI Service - Spok CTI Client install
       { "Type":"File","Location":"bin\\LUA Script Test.exe" },
       { "Type":"File","Location":"bin\\phone_server.exe" },
       { "Type":"File","Location":"bin\\spok_cti_service_trace.exe" },
-      { "Type":"File","Location":"bin\\SpokCTIClient" },
+      { "Type":"File","Location":"bin\\SpokCTIClient.lnk" },
       { "Type":"File","Location":"bin\\ssleay32.dll" },
       { "Type":"File","Location":"bin\\TAPI_device_info.exe" },
       { "Type":"File","Location":"bin\\LUA Script Test.exe" },
@@ -50,11 +49,6 @@ Feature: Validate Spok CTI Service - Spok CTI Client install
       { "Type":"File","Location":"CTI_Service\\Lua Samples\\Nortel MCA (M2000 series phones)\\app_specific_script.lua" },
       { "Type":"File","Location":"CTI_Service\\Lua Samples\\Snom (Broadworks)\\app_specific_script.lua" },
       { "Type":"File","Location":"CTI_Service\\Lua Samples\\Snom (Interactive Intelligence)\\app_specific_script.lua" },
-      { "Type":"File","Location":"CTI_Service\\Lua Samples\\" },
-      { "Type":"File","Location":"CTI_Service\\Lua Samples\\" },
-      { "Type":"File","Location":"CTI_Service\\Lua Samples\\" },
-      { "Type":"File","Location":"CTI_Service\\Lua Samples\\" },
-      { "Type":"File","Location":"CTI_Service\\Lua Samples\\" },
       { "Type":"File","Location":"Phone Server\\phone_server_aes.cfg" },
       { "Type":"File","Location":"Phone Server\\phone_server_alcatel_call_model.cfg" },
       { "Type":"File","Location":"Phone Server\\phone_server_alcatel_phone_model.cfg" },
@@ -78,7 +72,7 @@ Feature: Validate Spok CTI Service - Spok CTI Client install
 
   Scenario: Validate Spok CTI Client directories
     Given install directory "C:\Program Files (x86)\Amcom"
-    Given install directories
+    Given install items
     """
     [
       { "Type":"Directory","Location":"bin" },
@@ -102,12 +96,12 @@ Feature: Validate Spok CTI Service - Spok CTI Client install
 
 
 
-  Scenario: Validate registry settings
-    Then validate registry settings
-    """
-    {
-      [
-        { "Root":"HKLM", "Key":"SOFTWARE\Amcom\Settings", "Value":"" }
-      ]
-    }
-    """
+#  Scenario: Validate registry settings
+#    Then validate registry settings
+#    """
+#    {
+#      [
+#        { "Root":"HKLM", "Key":"SOFTWARE\Amcom\Settings", "Value":"" }
+#      ]
+#    }
+#    """

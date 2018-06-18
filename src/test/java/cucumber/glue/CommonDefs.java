@@ -1,6 +1,6 @@
 package cucumber.glue;
 
-public class Common {
+public class CommonDefs {
 
 
 }

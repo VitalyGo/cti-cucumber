@@ -6,6 +6,6 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions( features = "src/test/resources/features/web", glue = "cucumber.glue" )
-public class RunCukesTest {
+public class RunWebManagerTest {
     //Run Me!
 }

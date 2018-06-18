@@ -1,4 +1,4 @@
-package cucumber.glue.domain;
+package cucumber.glue.domain.installer;
 
 public class InstallerEntity {
 

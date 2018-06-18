@@ -1,4 +1,4 @@
-package cucumber.glue;
+package cucumber.glue.domain.common;
 
 public enum ServiceControllerStatus {
 

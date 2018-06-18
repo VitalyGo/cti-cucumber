@@ -1,4 +1,4 @@
-package cucumber.glue.domain;
+package cucumber.glue.domain.webManager;
 
 public class Hosts {
 

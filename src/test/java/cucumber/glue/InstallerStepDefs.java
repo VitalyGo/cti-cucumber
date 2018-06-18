@@ -3,7 +3,12 @@ package cucumber.glue;
 import com.google.gson.Gson;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import cucumber.glue.domain.InstallerEntity;
+import cucumber.glue.domain.installer.InstallerEntity;
+import cucumber.glue.domain.installer.InstallerInfo;
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import org.junit.Assert;
 
 import java.io.File;
 import java.util.Arrays;
@@ -20,29 +25,28 @@ public class InstallerStepDefs {
         installerDirectory = directory;
     }
 
-    @Given("^install files$")
-    public void install_files(String files) throws Throwable {
-
-        expectedInstallerEntities = Arrays.asList( new Gson().fromJson(files, InstallerEntity[].class));
-
-    }
-
-    @Given("^install directories$")
+    @Given("^install items$")
     public void install_directories(String directories) throws Throwable {
 
         expectedInstallerEntities = Arrays.asList( new Gson().fromJson(directories, InstallerEntity[].class));
-        System.out.print("Size: " + expectedInstallerEntities.size());
 
         for(InstallerEntity entity:expectedInstallerEntities)
         {
             entity.Location = String.join(File.separator, installerDirectory, entity.Location);
-            System.out.print(entity.Location);
-            System.out.print(System.lineSeparator());
         }
     }
 
     @Then("^validate files$")
     public void validate_files() throws Throwable {
+
+        String url = "http://AUT-INST-CL1/remote/api/install";
+
+        Response response = RestAssured.given().contentType(ContentType.JSON).body(expectedInstallerEntities).post(url);
+
+        InstallerInfo installerInfo = response.body().as(InstallerInfo.class);
+
+        Assert.assertEquals(installerInfo.message,"pass", installerInfo.status);
+
 
     }
 
